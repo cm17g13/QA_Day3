@@ -5,7 +5,10 @@ public class DogShow {
 	static String[] numbers;
 	
 	public static void main(String[] args) {
-		numbers = new String[10000];
+		
+		//This is the total number of dogs in the show		
+		final int dogNumberg = 100;
+		numbers = new String[dogNumberg];
 		
 		Random rand = new Random();
 		int dog = rand.nextInt(numbers.length-1);
@@ -43,6 +46,8 @@ public class DogShow {
 			return number + "th";
 		} else {
 			return number + findEnding(number.charAt(number.length()-1));
+			//return number + findEnding(number % 10) 
+			//If number was an int this would be possible
 		}
 	}
 	
@@ -54,11 +59,8 @@ public class DogShow {
 			return "nd";
 		case '3':
 			return "rd";
-		case '4': case '5': case '6': case '7': case '8': case '9': case '0':
-			return "th";
 		default:
-			System.err.println("This is not a valid number");
-			return null;
+			return "th";
 		}
 	}
 
