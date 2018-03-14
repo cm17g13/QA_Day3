@@ -5,10 +5,10 @@ public class DogShow {
 	static String[] numbers;
 	
 	public static void main(String[] args) {
-		numbers = new String[100];
+		numbers = new String[1000];
 		
 		Random rand = new Random();
-		int dog = rand.nextInt(99);
+		int dog = rand.nextInt(numbers.length-1);
 		
 		
 		for(int i = 0; i < numbers.length; i++) {
@@ -19,7 +19,7 @@ public class DogShow {
 			}
 			
 			String number = Integer.toString(i + 1);
-			if(number.charAt(0) == '1' && number.length() > 1) {
+			if( number.length() > 1 && number.charAt(number.length()-2) == '1') {
 				current = number + "th";
 			} else {
 				current = number + findEnding(number.charAt(number.length()-1));
@@ -32,10 +32,12 @@ public class DogShow {
 	private static void printDogs() {
 		String doggoLocation = null;
 		for(int i = 0; i < numbers.length; i ++) {
-			
+			if(i % 10 == 0) {
+				System.out.println();
+			}
 			if(numbers[i] == "Doggo") {
 				String number = Integer.toString(i + 1);
-				if(number.charAt(0) == '1' && number.length() > 1) {
+				if(number.charAt(number.length()-2) == '1' && number.length() > 1) {
 					doggoLocation = number + "th";
 				} else {
 					doggoLocation = number + findEnding(number.charAt(number.length()-1));
@@ -43,9 +45,7 @@ public class DogShow {
 				continue;
 			}
 			System.out.print(numbers[i] + " ");
-			if((i+1) % 12 == 0) {
-				System.out.println();
-			}
+			
 		}
 		System.out.println();
 		System.out.println("Your dog finished: " + doggoLocation);
