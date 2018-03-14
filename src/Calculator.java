@@ -4,7 +4,7 @@ public class Calculator {
 	
 	
 	public static void main(String[] args) {
-		int[] numbers = {2, 4, 8};
+		int[] numbers = {2, 2, 4};
 		
 		int result1 = canMultiply(numbers);
 		
@@ -60,6 +60,12 @@ public class Calculator {
 			if(numbers[i%3] * numbers[(i+1) % 3] == numbers[(i+2) % 3]) {
 				return i;	
 			}
+			//if 0 then 0, 1, 2 
+			//if 1 then 1, 2, 0
+			//if 2 then 2, 0, 1
+			//if(numbers[0] * numbers[1] == numbers[2])
+			//if(numbers[1] * numbers[2] == numbers[0])
+			//if(numbers[2] * numbers[0] == numbers[1])
 		}
 		return 3;
 	}
