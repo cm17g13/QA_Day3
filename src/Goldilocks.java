@@ -6,31 +6,29 @@ import java.util.ArrayList;
 
 public class Goldilocks {
 
-	static ArrayList<chairPorridge> chairPorridges;
-	static ArrayList<chairPorridge> suitable;
+	static ArrayList<ChairPorridge> chairPorridges;
+	static ArrayList<ChairPorridge> suitable;
 	static int goldiWeight;
 	static int goldiTemp;
 
 	public static void main(String[] args) {
 
-		chairPorridges = new ArrayList<chairPorridge>();
+		chairPorridges = new ArrayList<ChairPorridge>();
 		try {
 			readInput();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		// int goldiWeight = 100;
-		// int goldiTemp = 80;
-
 		
-		suitable = new ArrayList<chairPorridge>();
+		suitable = new ArrayList<ChairPorridge>();
 
-		for (int i = 0; i < chairPorridges.size(); i++) {
-			if (goldiWeight <= chairPorridges.get(i).getChair() && goldiTemp >= chairPorridges.get(i).getPorridge()) {
-				chairPorridge cp = chairPorridges.get(i);
-				cp.setIndex(i);
-				suitable.add(cp);
-				System.out.print((i + 1) + " ");
+		int x = 0;
+		for(ChairPorridge chairPorridge : chairPorridges) {
+			x++;
+			if(chairPorridge.getChair() >= goldiWeight && chairPorridge.getPorridge() <= goldiTemp) {
+				chairPorridge.setIndex(x);
+				suitable.add(chairPorridge);
+				System.out.print(x + " ");
 			}
 		}
 
@@ -49,10 +47,9 @@ public class Goldilocks {
 					System.out.print(", ");
 				}
 			}
-			System.out.print("#" + (suitable.get(i).getIndex() + 1));
+			System.out.print("#" + suitable.get(i).getIndex());
 		}
-		System.out.println(
-				" have good enough chairs to not collapse under Goldilocks, and porridge that is cool enough for her to eat.");
+		System.out.println(" have good enough chairs to not collapse under Goldilocks, and porridge that is cool enough for her to eat.");
 
 	}
 
@@ -70,7 +67,7 @@ public class Goldilocks {
 				System.out.println(Integer.parseInt(values[0]) + " " + Integer.parseInt(values[1]));
 				int weight = Integer.parseInt(values[0]);
 				int temp = Integer.parseInt(values[1]);
-				chairPorridges.add(new chairPorridge(weight, temp));
+				chairPorridges.add(new ChairPorridge(weight, temp));
 				currentLine = br.readLine();
 			}
 			br.close();

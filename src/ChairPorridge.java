@@ -1,11 +1,11 @@
 
-public class chairPorridge {
+public class ChairPorridge {
 
 	private int chairWeight;
 	private int porridgeTemp;
 	private int index;
 	
-	public chairPorridge(int chairWeight, int porridgeTemp) {
+	public ChairPorridge(int chairWeight, int porridgeTemp) {
 		this.chairWeight = chairWeight;
 		this.porridgeTemp = porridgeTemp;
 		//this.index = -1;
